@@ -7,8 +7,10 @@ function showTab(tabName) {
       section.querySelectorAll("img").forEach(img => {
         if (!img.src) {
           img.src = img.dataset.src;
-          img.onclick = () => openModal(img.src);
         }
+
+        // img.onclick の設定は毎回やる
+        img.onclick = () => openModal(img.src);
       });
     }
   });
@@ -17,11 +19,12 @@ function showTab(tabName) {
 function openModal(src) {
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modal-img");
+
   modalImg.src = src;
   modal.hidden = false;
 }
 
-// モーダル背景をクリックで閉じる
+// 背景クリックで閉じる
 document.getElementById("modal").addEventListener("click", () => {
   document.getElementById("modal").hidden = true;
 });
