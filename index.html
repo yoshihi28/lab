@@ -8,17 +8,34 @@
 </head>
 <body>
   <h1>ヨシヒの写真ギャラリー</h1>
-  <div class="gallery">
-    <img src="images/photo1.jpg" alt="写真1" onclick="openModal(this.src)" />
-    <img src="images/photo2.jpg" alt="写真2" onclick="openModal(this.src)" />
-    <img src="images/photo3.jpg" alt="写真3" onclick="openModal(this.src)" />
+
+  <!-- タブ -->
+  <div class="tabs">
+    <button onclick="showTab('food')">Food</button>
+    <button onclick="showTab('illust')">Illust</button>
+    <button onclick="showTab('photo')">Photo</button>
+  </div>
+
+  <!-- ギャラリー -->
+  <div id="gallery-container">
+    <div class="tab-content" data-tab="food" hidden>
+      <img data-src="images/photo1.jpg" alt="Food 1" />
+      <img data-src="images/photo2.jpg" alt="Food 2" />
+    </div>
+    <div class="tab-content" data-tab="illust" hidden>
+      <img data-src="images/photo1.jpg" alt="Illust 1" />
+      <img data-src="images/photo2.jpg" alt="Illust 2" />
+    </div>
+    <div class="tab-content" data-tab="photo" hidden>
+      <img data-src="images/photo1.jpg" alt="Photo 1" />
+      <img data-src="images/photo2.jpg" alt="Photo 2" />
+    </div>
   </div>
 
   <!-- モーダル -->
-  <div id="myModal" class="modal">
-    <div class="modal-overlay">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="modalImage" />
+  <div id="modal" class="modal" hidden>
+    <div class="modal-content">
+      <img id="modal-img" src="" alt="拡大画像" />
     </div>
   </div>
 

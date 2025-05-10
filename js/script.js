@@ -1,19 +1,27 @@
-function openModal(src) {
-  const modal = document.getElementById("myModal");
-  const modalImage = document.getElementById("modalImage");
+function showTab(tabName) {
+  document.querySelectorAll(".tab-content").forEach(section => {
+    const isTarget = section.dataset.tab === tabName;
+    section.hidden = !isTarget;
 
-  modalImage.src = src;
-  modal.style.display = "flex";
-
-  // 背景クリックで閉じる
-  modal.onclick = function(event) {
-    if (event.target === modal) {
-      closeModal();
+    if (isTarget) {
+      section.querySelectorAll("img").forEach(img => {
+        if (!img.src) {
+          img.src = img.dataset.src;
+          img.onclick = () => openModal(img.src);
+        }
+      });
     }
-  };
+  });
 }
 
-function closeModal() {
-  const modal = document.getElementById("myModal");
-  modal.style.display = "none";
+function openModal(src) {
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  modalImg.src = src;
+  modal.hidden = false;
 }
+
+// モーダル背景をクリックで閉じる
+document.getElementById("modal").addEventListener("click", () => {
+  document.getElementById("modal").hidden = true;
+});
