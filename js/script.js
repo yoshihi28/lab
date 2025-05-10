@@ -5,9 +5,8 @@ function openModal(src) {
   modalImage.src = src;
   modal.style.display = "flex";
 
-  // 背景クリックで閉じる処理
+  // 背景クリックで閉じる
   modal.onclick = function(event) {
-    // 画像自身をクリックしたときは閉じない
     if (event.target === modal) {
       closeModal();
     }
