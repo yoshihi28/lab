@@ -9,15 +9,15 @@
 <body>
   <h1>ヨシヒの写真ギャラリー</h1>
   <div class="gallery">
-    <a href="javascript:void(0);" onclick="openModal('images/photo1.jpg')"><img src="images/photo1.jpg" alt="写真1" /></a>
-    <a href="javascript:void(0);" onclick="openModal('images/photo2.jpg')"><img src="images/photo2.jpg" alt="写真2" /></a>
-    <a href="javascript:void(0);" onclick="openModal('images/photo3.jpg')"><img src="images/photo3.jpg" alt="写真3" /></a>
+    <img src="images/photo1.jpg" alt="写真1" onclick="openModal(this.src)" />
+    <img src="images/photo2.jpg" alt="写真2" onclick="openModal(this.src)" />
+    <img src="images/photo3.jpg" alt="写真3" onclick="openModal(this.src)" />
   </div>
 
-  <!-- モーダル -->
-  <div id="myModal" class="modal" onclick="closeModal(event)">
-    <span class="close">&times;</span>
-    <img id="modalImage" class="modal-content" />
+  <!-- モーダル本体 -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage" />
   </div>
 
   <script src="script.js"></script>
