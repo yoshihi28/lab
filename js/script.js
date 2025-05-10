@@ -8,7 +8,11 @@ function openModal(imageSrc) {
 }
 
 // モーダルを閉じる関数
-function closeModal() {
+function closeModal(event) {
   const modal = document.getElementById("myModal");
-  modal.style.display = "none"; // モーダル非表示
+  
+  // モーダルの内容（画像など）をクリックした場合は閉じない
+  if (event.target === modal) {
+    modal.style.display = "none"; // モーダル非表示
+  }
 }
