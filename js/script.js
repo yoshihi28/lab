@@ -21,10 +21,10 @@ function openModal(src) {
   const modalImg = document.getElementById("modal-img");
 
   modalImg.src = src;
-  modal.hidden = false;
+  modal.classList.add("show");
 }
 
-// 背景クリックで閉じる
 document.getElementById("modal").addEventListener("click", () => {
-  document.getElementById("modal").hidden = true;
+  const modal = document.getElementById("modal");
+  modal.classList.remove("show");
 });
