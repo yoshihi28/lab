@@ -10,19 +10,13 @@
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
-  border: 2px solid transparent; /* ボーダーなし */
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .tabs button:hover {
-  background-color: #0056b3; /* ホバー時の色 */
-}
-
-.tabs button.active {
-  background-color: #ff6f61; /* 選択中の色 */
-  border-color: #ff6f61; /* 選択中のボーダー色 */
+  background-color: #0056b3;
 }
 
 /* ギャラリー */

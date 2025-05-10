@@ -17,14 +17,6 @@ function showTab(tabName) {
       });
     }
   });
-
-  // タブのボタンを選択中のタブに変更
-  document.querySelectorAll(".tabs button").forEach(button => {
-    button.classList.remove("active"); // すべてのタブの選択状態を解除
-  });
-
-  const activeButton = document.querySelector(`.tabs button[onclick="showTab('${tabName}')"]`);
-  activeButton.classList.add("active"); // 選択されたタブに 'active' クラスを追加
 }
 
 // モーダルを表示する関数
