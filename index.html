@@ -4,14 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ヨシヒのギャラリー</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <h1>ヨシヒの写真ギャラリー</h1>
   <div class="gallery">
-    <a href="images/photo1.jpg" target="_blank"><img src="images/photo1.jpg" alt="写真1" /></a>
-    <a href="images/photo2.jpg" target="_blank"><img src="images/photo2.jpg" alt="写真2" /></a>
-    <a href="images/photo3.jpg" target="_blank"><img src="images/photo3.jpg" alt="写真3" /></a>
+    <a href="javascript:void(0);" onclick="openModal('images/photo1.jpg')"><img src="images/photo1.jpg" alt="写真1" /></a>
+    <a href="javascript:void(0);" onclick="openModal('images/photo2.jpg')"><img src="images/photo2.jpg" alt="写真2" /></a>
+    <a href="javascript:void(0);" onclick="openModal('images/photo3.jpg')"><img src="images/photo3.jpg" alt="写真3" /></a>
   </div>
+
+  <!-- モーダル -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" class="modal-content" />
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
