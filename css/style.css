@@ -14,6 +14,12 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 120px;
+  max-width: 150px;
+}
+
+.tabs button small {
+  color: #eee;
 }
 
 .tabs button:hover {
@@ -63,26 +69,8 @@
 
 /* モーダルコンテンツを相対配置 */
 .modal-content {
-  position: relative; /* 親要素を相対配置にして、ボタンをその中で絶対配置 */
   max-width: 90%;
   max-height: 90%;
-}
-
-/* 閉じるボタン */
-.close-btn {
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1000; /* ボタンが画像より前に来るように */
-}
-
-.close-btn:hover {
-  color: #ff6f61; /* ホバー時に色を変える */
 }
 
 .modal-content img {

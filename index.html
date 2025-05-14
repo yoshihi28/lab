@@ -11,36 +11,40 @@
 
   <!-- タブ -->
   <div class="tabs">
-    <button onclick="showTab('food')">Food</button>
-    <button onclick="showTab('illust')">Illust</button>
-    <button onclick="showTab('photo')">Photo</button>
+    <button onclick="showTab('tech')">
+      <div>技術系<br><small>Tech</small></div>
+    </button>
+    <button onclick="showTab('illust')">
+      <div>イラスト<br><small>Illustration</small></div>
+    </button>
+    <button onclick="showTab('plush')">
+      <div>ぬいぐるみ<br><small>Plush</small></div>
+    </button>
+    <button onclick="showTab('food')">
+      <div>たべもの<br><small>Food</small></div>
+    </button>
+    <button onclick="showTab('photo')">
+      <div>写真<br><small>Photo</small></div>
+    </button>
   </div>
 
   <!-- ギャラリー -->
   <div id="gallery-container">
-    <div class="tab-content" data-tab="food" id="food-tab">
-      <img src="images/photo1.jpg" alt="Food 1" />
-      <img src="images/photo2.jpg" alt="Food 2" />
-    </div>
-    <div class="tab-content" data-tab="illust" id="illust-tab" hidden>
-      <img src="images/photo2.jpg" alt="Illust 1" />
-      <img src="images/photo1.jpg" alt="Illust 2" />
-    </div>
-    <div class="tab-content" data-tab="photo" id="photo-tab" hidden>
-      <img src="images/photo3.jpg" alt="Photo 1" />
-      <img src="images/photo1.jpg" alt="Photo 2" />
-    </div>
+    <div class="tab-content" data-tab="tech" id="tech-tab"></div>
+    <div class="tab-content" data-tab="illust" id="illust-tab" hidden></div>
+    <div class="tab-content" data-tab="plush" id="plush-tab" hidden></div>
+    <div class="tab-content" data-tab="food" id="food-tab" hidden></div>
+    <div class="tab-content" data-tab="photo" id="photo-tab" hidden></div>
   </div>
 
   <!-- モーダル -->
   <div id="modal" class="modal">
     <div class="modal-content">
-       <!-- 閉じるボタン -->
-      <button id="close-btn" class="close-btn">×</button>
       <img id="modal-img" src="" alt="拡大画像" />
     </div>
   </div>
 
+  <script src="js/photoList.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

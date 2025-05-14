@@ -53,10 +53,24 @@ document.getElementById('modal').addEventListener('click', (event) => {
   }
 });
 
-// 閉じるボタンのイベントリスナーを追加
-document.getElementById('close-btn').addEventListener('click', closeModal);
+// 画像をタブに追加
+function addImagesToTab(tabId, imageList, altText = "Image") {
+  const tab = document.getElementById(tabId);
+  imageList.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = altText;
+    img.addEventListener("click", () => openModal(src));
+    tab.appendChild(img);
+  });
+}
 
 // ページの読み込み完了後に実行
 window.addEventListener('DOMContentLoaded', () => {
   showTab('food');
+  addImagesToTab("tech-tab", techImages, "Tech");
+  addImagesToTab("illust-tab", illustImages, "Illust");
+  addImagesToTab("plush-tab", plushImages, "Plush");
+  addImagesToTab("food-tab", foodImages, "Food");
+  addImagesToTab("photo-tab", photoImages, "Photo");
 });
