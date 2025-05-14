@@ -1,7 +1,7 @@
 /* タブスタイル */
 .tabs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -61,17 +61,18 @@
   align-items: center;
 }
 
-.modal-content img {
+/* モーダルコンテンツを相対配置 */
+.modal-content {
+  position: relative; /* 親要素を相対配置にして、ボタンをその中で絶対配置 */
   max-width: 90%;
   max-height: 90%;
-  object-fit: contain;
 }
 
 /* 閉じるボタン */
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -30px;
+  right: -30px;
   background: transparent;
   border: none;
   color: white;
@@ -82,4 +83,9 @@
 
 .close-btn:hover {
   color: #ff6f61; /* ホバー時に色を変える */
+}
+
+.modal-content img {
+  width: 100%; /* 画像のサイズを親要素に合わせる */
+  height: auto; /* アスペクト比を保ちながら高さを調整 */
 }
