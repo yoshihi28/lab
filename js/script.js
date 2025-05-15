@@ -48,9 +48,7 @@ document.querySelectorAll('#gallery-container img').forEach(img => {
 
 // モーダルをクリックで閉じる（背景部分）
 document.getElementById('modal').addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {  // 背景部分だけをクリックした場合
-    closeModal();
-  }
+  closeModal();
 });
 
 // 画像をタブに追加

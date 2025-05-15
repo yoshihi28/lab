@@ -51,6 +51,13 @@
   cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .tab-content img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
 /* モーダル */
 .modal {
   display: none;
