@@ -65,7 +65,7 @@ function addImagesToTab(tabId, imageList, altText = "Image") {
 
 // ページの読み込み完了後に実行
 window.addEventListener('DOMContentLoaded', () => {
-  showTab('food');
+  showTab('tech');
   addImagesToTab("tech-tab", techImages, "Tech");
   addImagesToTab("illust-tab", illustImages, "Illust");
   addImagesToTab("plush-tab", plushImages, "Plush");
