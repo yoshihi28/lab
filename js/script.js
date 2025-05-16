@@ -1,3 +1,6 @@
+// 読み込んだタブを記録するオブジェクト
+const loadedTabs = {};
+
 // タブ切り替え関数
 function showTab(tabName) {
   // すべてのタブを非表示にする
@@ -16,6 +19,12 @@ function showTab(tabName) {
   const selectedTab = document.getElementById(`${tabName}-tab`);
   if (selectedTab) {
     selectedTab.hidden = false;
+
+    // まだ画像を追加してない場合だけ追加する
+    if (!loadedTabs[tabName]) {
+      addImagesToTab(`${tabName}-tab`, imageLists[tabName], tabName); // imageLists はタブ名ごとの画像リストを持ったオブジェクト
+      loadedTabs[tabName] = true; // 一度追加したらフラグを立てるニャ
+    }
   }
 
   // 対応するボタンに active クラスを追加
@@ -58,6 +67,7 @@ function addImagesToTab(tabId, imageList, altText = "Image") {
     const img = document.createElement("img");
     img.src = src;
     img.alt = altText;
+    img.loading = "lazy";
     img.addEventListener("click", () => openModal(src));
     tab.appendChild(img);
   });
@@ -66,9 +76,4 @@ function addImagesToTab(tabId, imageList, altText = "Image") {
 // ページの読み込み完了後に実行
 window.addEventListener('DOMContentLoaded', () => {
   showTab('tech');
-  addImagesToTab("tech-tab", techImages, "Tech");
-  addImagesToTab("illust-tab", illustImages, "Illust");
-  addImagesToTab("plush-tab", plushImages, "Plush");
-  addImagesToTab("food-tab", foodImages, "Food");
-  addImagesToTab("photo-tab", photoImages, "Photo");
 });

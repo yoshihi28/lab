@@ -74,3 +74,11 @@ const photoImages = [
   "images/photo/torodaruma2012.jpg",
   "images/photo/santa.jpg",
 ];
+
+const imageLists = {
+  tech: techImages,
+  illust: illustImages,
+  plush: plushImages,
+  food: foodImages,
+  photo: photoImages,
+};
