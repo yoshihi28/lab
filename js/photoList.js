@@ -1,4 +1,7 @@
 const techImages = [
+  "images/tech/smartorowatch1.jpg",
+  "images/tech/smartorowatch2.jpg",
+  "images/tech/smartorowatch3.jpg",
   "images/tech/battery.jpg",
   "images/tech/battery_gokugoku.jpg",
   "images/tech/bg_center.jpg",
@@ -7,10 +10,9 @@ const techImages = [
   "images/tech/osakanya.jpg",
   "images/tech/proto1.png",
   "images/tech/proto2.png",
-  "images/tech/smartorowatch.jpg",
-  "images/tech/smartorowatch2.jpg",
   "images/tech/super_toroid.jpg",
   "images/tech/toro_wallpaper.png",
+  
 ];
 
 const illustImages = [
