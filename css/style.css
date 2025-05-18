@@ -1,5 +1,8 @@
 body {
   font-family: 'Share Tech', sans-serif;
+  height: auto; /* 固定を解除する */
+  min-height: 100vh; /* 画面の高さ以上は確保 */
+  padding-bottom: 100px; /* スクロール用の余白 */
 }
 
 .animated-title {
@@ -105,4 +108,30 @@ body {
 .modal-content img {
   width: 100%; /* 画像のサイズを親要素に合わせる */
   height: auto; /* アスペクト比を保ちながら高さを調整 */
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.down-arrow {
+  width: 100px;  /* サイズアップ！ */
+  height: 100px;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* ゆらゆらアニメーション */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);  /* 下にちょっとゆれるニャ */
+  }
 }
