@@ -112,7 +112,7 @@ body {
 
 .scroll-indicator {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

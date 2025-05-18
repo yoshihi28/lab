@@ -1,4 +1,4 @@
-const imagesPerLoad = 18;
+let imagesPerLoad = window.innerWidth >= 768 ? 18 : 12;
 const loadedTabs = {};
 const loadedCounts = {};
 
@@ -145,6 +145,9 @@ window.addEventListener('DOMContentLoaded', () => {
   showTab('tech');
 });
 
-// スクロール・タブ切り替え・画像追加のたびに呼ぶにゃ
+// スクロール・タブ切り替え・画像追加のたびに呼ぶ
 window.addEventListener('scroll', updateScrollIndicator);
-window.addEventListener('resize', updateScrollIndicator);
+window.addEventListener('resize', () => {
+  imagesPerLoad = window.innerWidth >= 768 ? 18 : 12;
+  updateScrollIndicator();
+});
