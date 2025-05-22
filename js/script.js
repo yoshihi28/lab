@@ -169,11 +169,12 @@ window.addEventListener('scroll', () => {
   // 今表示しているタブ
   const activeTab = document.querySelector('.tab-content:not([hidden])');
   if (!activeTab) return;
-  const tabName = activeTab.getAttribute('data-tab');
 
-  // 一番下まで来たか判定（20pxくらい手前で）
-  if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 20)) {
-    // まだ画像が残ってたら追加
+  const tabName = activeTab.getAttribute('data-tab');
+  const scrollBottom = window.innerHeight + window.scrollY;
+  const pageBottom = document.body.offsetHeight;
+
+  if ((scrollBottom + 50) >= pageBottom) {
     if (loadedCounts[tabName] < mediaLists[tabName].length) {
       loadMoreMedia(tabName);
     }
