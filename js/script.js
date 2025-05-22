@@ -11,7 +11,7 @@ function updateScrollIndicator() {
   }
 
   const tabName = activeTab.getAttribute('data-tab');
-  const hasMore = loadedCounts[tabName] < imageLists[tabName].length;
+  const hasMore = loadedCounts[tabName] < mediaLists[tabName].length;
 
   // 高さ不足でスクロールできない時でも矢印出したい
   const canScroll = document.body.scrollHeight > window.innerHeight;
@@ -46,7 +46,7 @@ function showTab(tabName) {
     if (!loadedTabs[tabName]) {
       loadedTabs[tabName] = true;
       loadedCounts[tabName] = 0;
-      loadMoreImages(tabName);
+      loadMoreMedia(tabName);
     }
   }
 
@@ -60,72 +60,99 @@ function showTab(tabName) {
   updateScrollIndicator();
 }
 
-// 指定タブに画像を追加で読み込む関数
-function loadMoreImages(tabName) {
+// 指定タブに画像・動画を追加で読み込む関数
+function loadMoreMedia(tabName) {
   const tab = document.getElementById(`${tabName}-tab`);
-  const imageList = imageLists[tabName];
-  if (!imageList) return;
+  const mediaList = mediaLists[tabName];
+  if (!mediaList) return;
 
-  const start = loadedCounts[tabName];
-  const end = Math.min(start + imagesPerLoad, imageList.length);
+  const start = loadedCounts[tabName] || 0;
+  const end = Math.min(start + imagesPerLoad, mediaList.length);
 
   for (let i = start; i < end; i++) {
-    const img = document.createElement("img");
-    img.src = imageList[i];
-    img.alt = tabName + " image";
-    img.loading = "lazy";
-    img.addEventListener("click", () => openModal(imageList[i]));
-    tab.appendChild(img);
-  }
-  loadedCounts[tabName] = end;
+    const item = mediaList[i];
+    let element;
 
-  // 最後にインジケータ更新
-  updateScrollIndicator();
+    if (typeof item === "string") {
+      // 画像
+      element = document.createElement("img");
+      element.src = item;
+      element.alt = `${tabName} image`;
+      element.loading = "lazy";
+      element.addEventListener("click", () => openModal(item));
+    } else if (typeof item === "object" && item.type === "video") {
+      // 動画
+      element = document.createElement("video");
+      element.src = item.src;
+      element.controls = true;
+      element.preload = "none";
+      element.setAttribute("poster", item.poster || "");
+      element.classList.add("video-item");
+    }
+
+    if (element) {
+      element.classList.add("media-item"); // 共通クラス
+      tab.appendChild(element);
+    }
+  }
+
+  loadedCounts[tabName] = end;
+  updateScrollIndicator(); // インジケータ更新
 }
 
-// モーダル表示関数
-function openModal(imageSrc) {
+// モーダル表示関数（画像または動画に対応）
+function openModal(src, type = 'image') {
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
+  const modalVideo = document.getElementById('modal-video');
+
+  if (type === 'image') {
+    modalImg.src = src;
+    modalImg.style.display = 'block';
+    modalVideo.style.display = 'none';
+    modalVideo.pause(); // 動画再生停止
+  } else if (type === 'video') {
+    modalVideo.src = src;
+    modalVideo.style.display = 'block';
+    modalImg.style.display = 'none';
+
+    modalVideo.muted = true;       // ミュートにする
+    modalVideo.autoplay = true;    // 自動再生ON
+    modalVideo.playsInline = true; // iOSでインライン再生
+    modalVideo.load();             // 動画をロード
+    modalVideo.play().catch(() => {
+      // 自動再生できない場合の処理（ユーザー操作待ち）
+    });
+  }
+
   modal.classList.add("show");
-  modalImg.src = imageSrc;
 }
 
 // モーダル閉じる関数
 function closeModal() {
   const modal = document.getElementById('modal');
+  const modalVideo = document.getElementById('modal-video');
   modal.classList.remove("show");
+  modalVideo.pause(); // 閉じたら動画も止める
 }
 
-// 画像クリック時にモーダルを開くイベントを追加
-document.querySelectorAll('#gallery-container img').forEach(img => {
-  img.addEventListener('click', () => {
-    openModal(img.src);
-  });
+const gallery = document.getElementById('gallery-container');
+gallery.addEventListener('click', (e) => {
+  const target = e.target;
+  if (target.tagName === 'IMG') {
+    openModal(target.src, 'image');
+  } else if (target.tagName === 'VIDEO') {
+    openModal(target.src, 'video');
+  }
 });
 
-// モーダルをクリックで閉じる（背景部分）
+// モーダルの背景をクリックで閉じる
 document.getElementById('modal').addEventListener('click', (event) => {
-  closeModal();
+  if (event.target.id === 'modal') closeModal();
 });
-
-// 画像をタブに追加
-function addImagesToTab(tabId, imageList, altText = "Image") {
-  const tab = document.getElementById(tabId);
-  imageList.forEach(src => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = altText;
-    img.loading = "lazy";
-    img.addEventListener("click", () => openModal(src));
-    tab.appendChild(img);
-  });
-}
 
 // スクロール監視して追加読み込みする処理
 window.addEventListener('scroll', () => {
-  console.log(`test`);
-
   // 今表示しているタブ
   const activeTab = document.querySelector('.tab-content:not([hidden])');
   if (!activeTab) return;
@@ -134,8 +161,8 @@ window.addEventListener('scroll', () => {
   // 一番下まで来たか判定（20pxくらい手前で）
   if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 20)) {
     // まだ画像が残ってたら追加
-    if (loadedCounts[tabName] < imageLists[tabName].length) {
-      loadMoreImages(tabName);
+    if (loadedCounts[tabName] < mediaLists[tabName].length) {
+      loadMoreMedia(tabName);
     }
   }
 });

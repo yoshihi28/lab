@@ -15,6 +15,12 @@ body {
   animation: fadeSlideIn 1s ease-out forwards;
 }
 
+.version {
+  font-size: 1.1rem;
+  margin-left: 0.2rem;
+  color: #888;
+}
+
 @keyframes fadeSlideIn {
   to {
     opacity: 1;
@@ -67,7 +73,8 @@ body {
   display: none !important;
 }
 
-.tab-content img {
+.tab-content img,
+.tab-content video {
   width: calc((100% - 20px) / 3); /* 3列、gap合計20pxならこれくらい */
   height: auto;
   aspect-ratio: 1 / 1; /* 正方形に保つ */
@@ -76,9 +83,15 @@ body {
 }
 
 @media (min-width: 768px) {
-  .tab-content img {
+  .tab-content img,
+  .tab-content video {
     width: calc((100% - 30px) / 7); /* 6列にしてもOK */
   }
+}
+
+video {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 /* モーダル */
@@ -110,6 +123,13 @@ body {
   height: auto; /* アスペクト比を保ちながら高さを調整 */
 }
 
+.modal-content video {
+  width: 100%;
+  height: auto;
+  max-height: 90vh; /* 画面高さの90%くらいに */
+  object-fit: contain; /* アスペクト比を崩さずに収める */
+}
+
 .scroll-indicator {
   position: fixed;
   bottom: 0px;
@@ -132,6 +152,6 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(8px);  /* 下にちょっとゆれるニャ */
+    transform: translateY(8px);
   }
 }

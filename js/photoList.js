@@ -1,4 +1,5 @@
-const techImages = [
+const techMedia = [
+  { type: "video", src: "videos/looking_glass.mp4", poster: "images/tech/looking_glass_thumb.jpg" },
   "images/tech/smartorowatch1.jpg",
   "images/tech/smartorowatch2.jpg",
   "images/tech/smartorowatch3.jpg",
@@ -15,7 +16,7 @@ const techImages = [
   
 ];
 
-const illustImages = [
+const illustMedia = [
   "images/illust/halloween2016.jpg",
   "images/illust/halloween2018.png",
   "images/illust/halloween2017.jpg",
@@ -58,7 +59,7 @@ const illustImages = [
   "images/illust/kotowaru.png",
 ];
 
-const plushImages = [
+const plushMedia = [
   "images/plush/hiyoko.jpg",
   "images/plush/akuma.jpg",
   "images/plush/kekkon.jpg",
@@ -74,7 +75,7 @@ const plushImages = [
   "images/plush/yopparai.jpg",
 ];
 
-const foodImages = [
+const foodMedia = [
   "images/food/toroman01.jpg",
   "images/food/toroman02.jpg",
   "images/food/toroman03.jpg",
@@ -88,15 +89,15 @@ const foodImages = [
   "images/food/toroben.jpg",
 ];
 
-const photoImages = [
+const photoMedia = [
   "images/photo/torodaruma2012.jpg",
   "images/photo/santa.jpg",
 ];
 
-const imageLists = {
-  tech: techImages,
-  illust: illustImages,
-  plush: plushImages,
-  food: foodImages,
-  photo: photoImages,
+const mediaLists = {
+  tech: techMedia,
+  illust: illustMedia,
+  plush: plushMedia,
+  food: foodMedia,
+  photo: photoMedia,
 };

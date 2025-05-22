@@ -17,7 +17,10 @@
   </script>
 </head>
 <body>
-  <h1 class="animated-title">yoshihi lab</h1>
+  <h1 class="animated-title">
+    yoshihi lab
+    <span class="version">ver.1.0.0</span>
+  </h1>
 
   <!-- タブ -->
   <div class="tabs">
@@ -49,8 +52,9 @@
 
   <!-- モーダル -->
   <div id="modal" class="modal">
-    <div class="modal-content">
-      <img id="modal-img" src="" alt="拡大画像" />
+    <div class="modal-content" id="modal-content">
+      <img id="modal-img" src="" alt="拡大画像" style="display: none;" />
+      <video id="modal-video" controls style="display: none; max-width: 100%; max-height: 100%;" preload="none"></video>
     </div>
   </div>
 
