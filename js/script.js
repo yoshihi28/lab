@@ -79,20 +79,32 @@ function loadMoreMedia(tabName) {
       element.src = item;
       element.alt = `${tabName} image`;
       element.loading = "lazy";
-      element.addEventListener("click", () => openModal(item));
-    } else if (typeof item === "object" && item.type === "video") {
-      // 動画
-      element = document.createElement("video");
-      element.src = item.src;
-      element.controls = false;
-      element.preload = "none";
-      element.setAttribute("poster", item.poster || "");
-      element.classList.add("video-item");
-    }
-
-    if (element) {
-      element.classList.add("media-item"); // 共通クラス
+      element.addEventListener("click", () => openModal(item, 'image'));
+      element.classList.add("media-item");
       tab.appendChild(element);
+    } else if (typeof item === "object" && item.type === "video") {
+      // 動画のラッパーを作る
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("video-wrapper", "media-item");
+
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = false;
+      video.preload = "none";
+      video.setAttribute("poster", item.poster || "");
+      video.classList.add("video-item");
+
+      // 再生マーク要素
+      const playIcon = document.createElement("div");
+      playIcon.classList.add("play-icon");
+      playIcon.innerHTML = "&#9658;"; // ▶の三角形
+
+      // クリックでモーダル開く
+      wrapper.addEventListener("click", () => openModal(item.src, 'video'));
+
+      wrapper.appendChild(video);
+      wrapper.appendChild(playIcon);
+      tab.appendChild(wrapper);
     }
   }
 
