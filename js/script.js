@@ -84,7 +84,7 @@ function loadMoreMedia(tabName) {
       // 動画
       element = document.createElement("video");
       element.src = item.src;
-      element.controls = true;
+      element.controls = false;
       element.preload = "none";
       element.setAttribute("poster", item.poster || "");
       element.classList.add("video-item");
@@ -136,6 +136,7 @@ function closeModal() {
   modalVideo.pause(); // 閉じたら動画も止める
 }
 
+// モーダルを開く
 const gallery = document.getElementById('gallery-container');
 gallery.addEventListener('click', (e) => {
   const target = e.target;
@@ -146,9 +147,9 @@ gallery.addEventListener('click', (e) => {
   }
 });
 
-// モーダルの背景をクリックで閉じる
+// モーダルを閉じる
 document.getElementById('modal').addEventListener('click', (event) => {
-  if (event.target.id === 'modal') closeModal();
+  closeModal();
 });
 
 // スクロール監視して追加読み込みする処理
