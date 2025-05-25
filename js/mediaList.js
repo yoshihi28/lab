@@ -8,6 +8,10 @@ const techMedia = [
   "images/tech/pocketstation2.jpg",
   "images/tech/battery.jpg",
   "images/tech/battery_gokugoku.jpg",
+  "images/tech/3dprint.jpg",
+  "images/tech/3dprint2.jpg",
+  "images/tech/3dprint3.jpg",
+  "images/tech/3dprint4.jpg",
   "images/tech/bg_center.jpg",
   "images/tech/live02.png",
   "images/tech/live03.jpg",
@@ -52,6 +56,7 @@ const illustMedia = [
   "images/illust/xmas2017.jpg",
   "images/illust/xmas2013.png",
   "images/illust/xmas2012.png",
+  "images/illust/goron.jpg",
   "images/illust/alisa.png",
   "images/illust/birthday.png",
   "images/illust/coat.png",
@@ -62,6 +67,7 @@ const illustMedia = [
 ];
 
 const plushMedia = [
+  "images/plush/tororoom.jpg",
   "images/plush/hiyoko.jpg",
   "images/plush/akuma.jpg",
   "images/plush/kekkon.jpg",
