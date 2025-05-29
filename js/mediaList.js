@@ -1,14 +1,30 @@
 const techMedia = [
-  { type: "video", src: "videos/looking_glass.mp4", poster: "images/tech/looking_glass_thumb.jpg" },
-  "images/tech/smartorowatch1.jpg",
-  "images/tech/smartorowatch2.jpg",
-  "images/tech/smartorowatch3.jpg",
+  { 
+    type: "video",
+    src: "videos/looking_glass.mp4",
+    poster: "images/tech/looking_glass_thumb.jpg"
+  },
+  {
+    src: "images/tech/smartorowatch1.jpg",
+    description: "スマートロウォッチ 1代目"
+  },
+  {
+    src: "images/tech/smartorowatch2.jpg",
+    description: "スマートロウォッチ 2代目"
+  },
+  {
+    src: "images/tech/smartorowatch3.jpg",
+    description: "スマートロウォッチ 3代目"
+  },
   "images/tech/smartorowatch4.jpg",
   "images/tech/pocketstation.jpg",
   "images/tech/pocketstation2.jpg",
   "images/tech/battery.jpg",
   "images/tech/battery_gokugoku.jpg",
-  "images/tech/3dprint.jpg",
+  {
+    src: "images/tech/3dprint.jpg",
+    description: "はじめて3Dプリンタで作ったトロ"
+  },
   "images/tech/3dprint2.jpg",
   "images/tech/3dprint3.jpg",
   "images/tech/3dprint4.jpg",

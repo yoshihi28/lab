@@ -162,6 +162,20 @@ video {
   object-fit: contain; /* アスペクト比を崩さずに収める */
 }
 
+.modal-description {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center; /* 中央揃え */
+    border: 1px solid #333;
+    margin: 20px auto 0; /* 上にマージン、左右中央寄せ */
+}
+
 .scroll-indicator {
   position: fixed;
   bottom: 0px;

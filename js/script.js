@@ -74,37 +74,48 @@ function loadMoreMedia(tabName) {
     let element;
 
     if (typeof item === "string") {
-      // 画像
+      // 画像（文字列の場合）
       element = document.createElement("img");
       element.src = item;
       element.alt = `${tabName} image`;
       element.loading = "lazy";
-      element.addEventListener("click", () => openModal(item, 'image'));
+      element.addEventListener("click", () => openModal(item, 'image', null));
       element.classList.add("media-item");
       tab.appendChild(element);
-    } else if (typeof item === "object" && item.type === "video") {
-      // 動画のラッパーを作る
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("video-wrapper", "media-item");
+    } else if (typeof item === "object") {
+      if (item.type === "video") {
+        // 動画のラッパーを作る
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("video-wrapper", "media-item");
 
-      const video = document.createElement("video");
-      video.src = item.src;
-      video.controls = false;
-      video.preload = "none";
-      video.setAttribute("poster", item.poster || "");
-      video.classList.add("video-item");
+        const video = document.createElement("video");
+        video.src = item.src;
+        video.controls = false;
+        video.preload = "none";
+        video.setAttribute("poster", item.poster || "");
+        video.classList.add("video-item");
 
-      // 再生マーク要素
-      const playIcon = document.createElement("div");
-      playIcon.classList.add("play-icon");
-      playIcon.innerHTML = "&#9658;"; // ▶の三角形
+        // 再生マーク要素
+        const playIcon = document.createElement("div");
+        playIcon.classList.add("play-icon");
+        playIcon.innerHTML = "&#9658;"; // ▶の三角形
 
-      // クリックでモーダル開く
-      wrapper.addEventListener("click", () => openModal(item.src, 'video'));
+        // クリックでモーダル開く（説明文も渡す）
+        wrapper.addEventListener("click", () => openModal(item.src, 'video', item.description));
 
-      wrapper.appendChild(video);
-      wrapper.appendChild(playIcon);
-      tab.appendChild(wrapper);
+        wrapper.appendChild(video);
+        wrapper.appendChild(playIcon);
+        tab.appendChild(wrapper);
+      } else {
+        // 画像（オブジェクトの場合 - 説明文付き）
+        element = document.createElement("img");
+        element.src = item.src || item;
+        element.alt = `${tabName} image`;
+        element.loading = "lazy";
+        element.addEventListener("click", () => openModal(item.src || item, 'image', item.description));
+        element.classList.add("media-item");
+        tab.appendChild(element);
+      }
     }
   }
 
@@ -112,11 +123,27 @@ function loadMoreMedia(tabName) {
   updateScrollIndicator(); // インジケータ更新
 }
 
-// モーダル表示関数（画像または動画に対応）
-function openModal(src, type = 'image') {
+// モーダル表示関数（画像または動画に対応、説明文も表示）
+function openModal(src, type = 'image', description = null) {
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
   const modalVideo = document.getElementById('modal-video');
+  const modalDescription = document.getElementById('modal-description');
+
+  // デバッグ用のログを追加
+  console.log('Description value:', description);
+  console.log('Description element:', modalDescription);
+  console.log('Description type:', typeof description);
+
+  // 説明文を更新
+  if (description) {
+    modalDescription.textContent = description;
+    modalDescription.style.display = 'block';
+     console.log('Description should be visible now');
+  } else {
+    modalDescription.style.display = 'none';
+     console.log('Description hidden because no description provided');
+  }
 
   if (type === 'image') {
     modalImg.src = src;
@@ -147,17 +174,6 @@ function closeModal() {
   modal.classList.remove("show");
   modalVideo.pause(); // 閉じたら動画も止める
 }
-
-// モーダルを開く
-const gallery = document.getElementById('gallery-container');
-gallery.addEventListener('click', (e) => {
-  const target = e.target;
-  if (target.tagName === 'IMG') {
-    openModal(target.src, 'image');
-  } else if (target.tagName === 'VIDEO') {
-    openModal(target.src, 'video');
-  }
-});
 
 // モーダルを閉じる
 document.getElementById('modal').addEventListener('click', (event) => {
