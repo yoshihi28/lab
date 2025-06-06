@@ -1,8 +1,15 @@
 const techMedia = [
   { 
     type: "video",
+    src: "videos/google_map.mp4",
+    poster: "images/tech/google_map_thumb.jpg",
+    description: "VRゴーグルをかぶると、Google Map上でトロと自転車のって旅できるよ。エアロバイクをこぐのに飽きないように作ってみた"
+  },
+  { 
+    type: "video",
     src: "videos/looking_glass.mp4",
-    poster: "images/tech/looking_glass_thumb.jpg"
+    poster: "images/tech/looking_glass_thumb.jpg",
+    description: "トロクロソラが立体に見えて、さらになでなでできるよ"
   },
   {
     src: "images/tech/smartorowatch1.jpg",
@@ -16,18 +23,46 @@ const techMedia = [
     src: "images/tech/smartorowatch3.jpg",
     description: "スマートロウォッチ 3代目"
   },
-  "images/tech/smartorowatch4.jpg",
-  "images/tech/pocketstation.jpg",
-  "images/tech/pocketstation2.jpg",
-  "images/tech/battery.jpg",
-  "images/tech/battery_gokugoku.jpg",
+  {
+    src: "images/tech/smartorowatch4.jpg",
+    description: "妻とおそろいのスマートロウォッチ"
+  },
+  {
+    src: "images/tech/pocketstation.jpg",
+    description: "ポケステリュック！絵も動くよ"
+  },
+  {
+    src: "images/tech/pocketstation2.jpg",
+    description: "背負うとこんな感じ"
+  },
+  {
+    src: "images/tech/battery.jpg",
+    description: "バッテリー残量を表示するウィジェット作ったよ"
+  },
+  {
+    src: "images/tech/battery_gokugoku.jpg",
+    description: "バッテリーの減りが早いのトロが飲んじゃうからか～。じゃあしょうがないか"
+  },
   {
     src: "images/tech/3dprint.jpg",
     description: "はじめて3Dプリンタで作ったトロ"
   },
-  "images/tech/3dprint2.jpg",
-  "images/tech/3dprint3.jpg",
-  "images/tech/3dprint4.jpg",
+  {
+    src: "images/tech/3dprint2.jpg",
+    description: "3Dプリント中" 
+  },
+  { 
+    src: "images/tech/3dprint3.jpg",
+    description: "プリントできた"
+  },
+  { 
+    src: "images/tech/3dprint4.jpg",
+    description: "塗装したよ"
+  },
+  { 
+    src: "images/tech/3dprint5.jpg",
+    description: "クロも作ったよ"
+  },
   "images/tech/bg_center.jpg",
   "images/tech/live02.png",
   "images/tech/live03.jpg",
@@ -87,6 +122,7 @@ const plushMedia = [
   "images/plush/hiyoko.jpg",
   "images/plush/akuma.jpg",
   "images/plush/kekkon.jpg",
+  "images/plush/kekkon2.jpg",
   "images/plush/king.jpg",
   "images/plush/koteki.jpg",
   "images/plush/maid.jpg",
@@ -124,6 +160,8 @@ const foodMedia = [
   "images/food/omu02.jpg",
   "images/food/potato.jpg",
   "images/food/toroben.jpg",
+  "images/food/sushi.jpg",
+  "images/food/omu.jpg",
 ];
 
 const photoMedia = [
@@ -136,6 +174,7 @@ const photoMedia = [
   "images/photo/rirakkuma.jpg",
   "images/photo/rirakkuma2.jpg",
   "images/photo/rirakkuma3.jpg",
+  "images/photo/momo.jpg",
   "images/photo/torowing.jpg",
   "images/photo/torowing2.jpg",
   "images/photo/kurowing.jpg",
@@ -150,6 +189,9 @@ const photoMedia = [
   "images/photo/photo9.jpg",
   "images/photo/photo10.jpg",
   "images/photo/photo11.jpg",
+  "images/photo/photo12.jpg",
+  "images/photo/photo13.jpg",
+  "images/photo/photo14.jpg",
   "images/photo/cafe.jpg",
   "images/photo/cafe2.jpg",
   "images/photo/pokemon.jpg",
