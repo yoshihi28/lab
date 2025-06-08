@@ -184,7 +184,7 @@ video {
   background-color: rgba(0,0,0,0.5);
   color: white;
   border: none;
-  padding: 0.5em 1em;
+  padding: 0.25em 0.5em;
   cursor: pointer;
   z-index: 10;
 }
