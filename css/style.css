@@ -176,6 +176,27 @@ video {
     margin: 20px auto 0; /* 上にマージン、左右中央寄せ */
 }
 
+.modal-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.modal-nav-button.left {
+  left: 10px;
+}
+
+.modal-nav-button.right {
+  right: 10px;
+}
+
 .scroll-indicator {
   position: fixed;
   bottom: 0px;

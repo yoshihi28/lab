@@ -1,6 +1,8 @@
 let imagesPerLoad = window.innerWidth >= 768 ? 18 : 12;
 const loadedTabs = {};
 const loadedCounts = {};
+let currentMediaIndex = null;
+let currentTabName = null;
 
 function updateScrollIndicator() {
   const indicator = document.getElementById('scroll-indicator');
@@ -79,8 +81,10 @@ function loadMoreMedia(tabName) {
       element.src = item;
       element.alt = `${tabName} image`;
       element.loading = "lazy";
-      element.addEventListener("click", () => openModal(item, 'image', null));
+      element.addEventListener("click", () => openModal(item.src || item, 'image', item.description, i, tabName));
       element.classList.add("media-item");
+      element.dataset.index = i;
+      element.dataset.tab = tabName;
       tab.appendChild(element);
     } else if (typeof item === "object") {
       if (item.type === "video") {
@@ -101,10 +105,12 @@ function loadMoreMedia(tabName) {
         playIcon.innerHTML = "&#9658;"; // ▶の三角形
 
         // クリックでモーダル開く（説明文も渡す）
-        wrapper.addEventListener("click", () => openModal(item.src, 'video', item.description));
+        wrapper.addEventListener("click", () => openModal(item.src, 'video', item.description, i, tabName));
 
         wrapper.appendChild(video);
         wrapper.appendChild(playIcon);
+        wrapper.dataset.index = i;
+        wrapper.dataset.tab = tabName;
         tab.appendChild(wrapper);
       } else {
         // 画像（オブジェクトの場合 - 説明文付き）
@@ -112,8 +118,10 @@ function loadMoreMedia(tabName) {
         element.src = item.src || item;
         element.alt = `${tabName} image`;
         element.loading = "lazy";
-        element.addEventListener("click", () => openModal(item.src || item, 'image', item.description));
+        element.addEventListener("click", () => openModal(item.src || item, 'image', item.description, i, tabName));
         element.classList.add("media-item");
+        element.dataset.index = i;
+        element.dataset.tab = tabName;
         tab.appendChild(element);
       }
     }
@@ -124,11 +132,15 @@ function loadMoreMedia(tabName) {
 }
 
 // モーダル表示関数（画像または動画に対応、説明文も表示）
-function openModal(src, type = 'image', description = null) {
+function openModal(src, type = 'image', description = null, index = null, tabName = null) {
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
   const modalVideo = document.getElementById('modal-video');
   const modalDescription = document.getElementById('modal-description');
+
+  // どのタブの何番目かを記録
+  currentMediaIndex = index;
+  currentTabName = tabName;
 
   // デバッグ用のログを追加
   console.log('Description value:', description);
@@ -175,9 +187,45 @@ function closeModal() {
   modalVideo.pause(); // 閉じたら動画も止める
 }
 
+// 前後に移動する関数
+function showAdjacentMedia(direction) {
+  if (!currentTabName || currentMediaIndex === -1) return;
+
+  const mediaList = mediaLists[currentTabName];
+  let newIndex = currentMediaIndex + direction;
+
+  if (newIndex < 0 || newIndex >= mediaList.length) return;
+
+  const newMedia = mediaList[newIndex];
+  const type = (typeof newMedia === 'object' && newMedia.type === 'video') ? 'video' : 'image';
+  const src = typeof newMedia === 'string' ? newMedia : newMedia.src;
+  const description = typeof newMedia === 'object' ? newMedia.description || null : null;
+
+  openModal(src, type, description, newIndex, currentTabName);
+
+  currentMediaIndex = newIndex;
+}
+
 // モーダルを閉じる
 document.getElementById('modal').addEventListener('click', (event) => {
   closeModal();
+});
+
+// 前後移動
+document.getElementById('modal-prev').addEventListener('click', (e) => {
+  e.stopPropagation(); // モーダル自体のクリック判定を止める
+  showAdjacentMedia(-1);
+});
+
+document.getElementById('modal-next').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showAdjacentMedia(1);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('modal').classList.contains('show')) return;
+  if (e.key === 'ArrowLeft') showAdjacentMedia(-1);
+  if (e.key === 'ArrowRight') showAdjacentMedia(1);
 });
 
 // スクロール監視して追加読み込みする処理
