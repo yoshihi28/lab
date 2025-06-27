@@ -61,6 +61,12 @@ const techMedia = [
     src: "images/tech/embroidery.jpg",
     description: "刺繍ミシンで作ったトロの刺繍"
   },
+  { 
+    type: "video",
+    src: "videos/sewing.mp4",
+    poster: "images/tech/sewing_thumb.jpg",
+    description: "刺繍中のトロ"
+  },
   {
     src: "images/tech/battery.jpg",
     description: "バッテリー残量を表示するウィジェット作ったよ"
