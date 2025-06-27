@@ -7,6 +7,12 @@ const techMedia = [
   },
   { 
     type: "video",
+    src: "videos/hololens_toro.mp4",
+    poster: "images/tech/hololens_toro_thumb.jpg",
+    description: "HoloLensで現実世界にトロを召喚したよ"
+  },
+  { 
+    type: "video",
     src: "videos/quill.mp4",
     poster: "images/tech/quill_thumb.jpg",
     description: "VR上でお絵かきしたトロクロ"
