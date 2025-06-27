@@ -1,6 +1,18 @@
 const techMedia = [
   { 
     type: "video",
+    src: "videos/lume_toro.mp4",
+    poster: "images/tech/lume_toro_thumb.jpg",
+    description: "立体的に見えるトロ。箱庭感があってかわいい"
+  },
+  { 
+    type: "video",
+    src: "videos/quill.mp4",
+    poster: "images/tech/quill_thumb.jpg",
+    description: "VR上でお絵かきしたトロクロ"
+  },
+  { 
+    type: "video",
     src: "videos/google_map.mp4",
     poster: "images/tech/google_map_thumb.jpg",
     description: "VRゴーグルをかぶると、Google Map上でトロと自転車のって旅できるよ。エアロバイクをこぐのに飽きないように作ってみた"
@@ -34,6 +46,14 @@ const techMedia = [
   {
     src: "images/tech/pocketstation2.jpg",
     description: "背負うとこんな感じ"
+  },
+  {
+    src: "images/tech/3dprint6.jpg",
+    description: "3Dプリンタとアイアンペイントで作ったトロの銅像"
+  },
+  {
+    src: "images/tech/embroidery.jpg",
+    description: "刺繍ミシンで作ったトロの刺繍"
   },
   {
     src: "images/tech/battery.jpg",
