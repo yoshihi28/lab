@@ -7,6 +7,12 @@ const techMedia = [
   },
   { 
     type: "video",
+    src: "videos/looking_glass_go.mp4",
+    poster: "images/tech/looking_glass_go_thumb.jpg",
+    description: "ヨシヒのターン！ドロー！手札から井上トロを召喚！！"
+  },
+  { 
+    type: "video",
     src: "videos/hololens_toro.mp4",
     poster: "images/tech/hololens_toro_thumb.jpg",
     description: "HoloLensで現実世界にトロを召喚したよ"
